@@ -1,7 +1,9 @@
 // ==ClosureCompiler==
 // @compilation_level ADVANCED_OPTIMIZATIONS
-// @externs_url http://closure-compiler.googlecode.com/svn/trunk/contrib/externs/maps/google_maps_api_v3_3.js
+// @externs_url https://raw.githubusercontent.com/google/closure-compiler/master/contrib/externs/maps/google_maps_api_v3_20.js
 // ==/ClosureCompiler==
+
+// forked by @sodik82
 
 /**
  * @name MarkerClusterer for Google Maps v3
@@ -1071,8 +1073,9 @@ ClusterIcon.prototype.onAdd = function() {
   panes.overlayMouseTarget.appendChild(this.div_);
 
   var that = this;
-  google.maps.event.addDomListener(this.div_, 'click', function() {
+  google.maps.event.addDomListener(this.div_, 'click', function(e) {
     that.triggerClusterClick();
+    e.cancelBubble = true;
   });
 };
 
